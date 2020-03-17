@@ -1,9 +1,5 @@
-kind: pipeline
-name: default
-
-steps:
-  - name: frontend
-    image: node
+pipeline:
+  build:
+    image: maven:3.5-alpine
     commands:
-      - npm ci
-      - npm run test:unit
+      - mvn clean package
