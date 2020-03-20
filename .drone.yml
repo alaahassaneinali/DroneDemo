@@ -1,5 +1,9 @@
-pipeline:
-  build:
-    image: maven:3.5-alpine
+kind: pipeline
+name: default
+
+steps:
+  - name: test
+    image: maven:3-jdk-10
     commands:
-      - mvn clean package
+      - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      - mvn test -B
